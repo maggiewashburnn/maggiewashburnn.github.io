@@ -1,1 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Website</title>
 
+  <style>
+    :root {
+      --bg: #f7f7fa;
+      --text: #222;
+      --accent: #5a67d8;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      text-align: center;
+      padding: 0 1.5rem;
+    }
+
+    header {
+      padding: 5rem 1rem 3rem;
+    }
+
+    h1 {
+      font-size: 2.75rem;
+      margin: 0.2rem 0;
+    }
+
+    p.subtitle {
+      font-size: 1.25rem;
+      color: #555;
+      max-width: 550px;
+      margin: 0.5rem auto 2rem;
+    }
+
+    a.button {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 0.8rem 1.6rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 1.05rem;
+      transition: 0.2s ease-in-out;
+    }
+
+    a.button:hover {
+      opacity: 0.85;
+      transform: translateY(-2px);
+    }
+
+    footer {
+      margin-top: 5rem;
+      padding: 2rem 0;
+      font-size: 0.9rem;
+      color: #777;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Welcome to My Website</h1>
+    <p class="subtitle">This is a simple site hosted for free with GitHub Pages.</p>
+
+    <a href="#" class="button">Learn More</a>
+  </header>
+
+  <footer>
+    © 2025 — Hosted with GitHub Pages
+  </footer>
+</body>
+</html>
