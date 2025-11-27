@@ -1,77 +1,348 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>My Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>INSCAPE ZINE</title>
+
+  <!-- FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kirang+Haerang&family=Lexend+Deca:wght@100..900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --bg: #f7f7fa;
-      --text: #222;
-      --accent: #5a67d8;
-    }
-
+    /* --- Fonts & base --- */
     body {
+      font-family: 'Lexend Deca', sans-serif; /* paragraphs/nav/buttons */
+      background: #523100;                     /* requested page background */
       margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      text-align: center;
-      padding: 0 1.5rem;
-    }
-
-    header {
-      padding: 5rem 1rem 3rem;
+      padding: 20px;
+      color: #3E3028;
     }
 
     h1 {
-      font-size: 2.75rem;
-      margin: 0.2rem 0;
+      text-align: center;
+      margin-bottom: 40px;
+      font-family: 'Kirang Haerang', cursive;  /* h1 font as requested */
+      color: #523100;
+      font-size: 48px;
     }
 
-    p.subtitle {
-      font-size: 1.25rem;
-      color: #555;
-      max-width: 550px;
-      margin: 0.5rem auto 2rem;
+    /* --- Nav --- */
+    .navbar {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 20px;
+      background: #F1D1DF; /* navbar background requested */
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      font-size: 20px;
+      font-family: 'Lexend Deca';
     }
 
-    a.button {
-      display: inline-block;
-      background: var(--accent);
-      color: white;
-      padding: 0.8rem 1.6rem;
-      border-radius: 10px;
+    .navbar a {
       text-decoration: none;
-      font-size: 1.05rem;
-      transition: 0.2s ease-in-out;
+      color: #523100;
+      font-weight: bold;
     }
 
-    a.button:hover {
-      opacity: 0.85;
-      transform: translateY(-2px);
+    .navbar a:hover {
+      opacity: 0.8;
     }
 
-    footer {
-      margin-top: 5rem;
-      padding: 2rem 0;
-      font-size: 0.9rem;
-      color: #777;
+    /* --- Section rounded boxes --- */
+    .section-box {
+      background: #FBFCF1; /* grey color changed to FBFCF1 as requested */
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 1000px;
+      margin: 40px auto;
+    }
+
+    /* --- ABOUT layout --- */
+    .about-images {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 10px;
+      margin-top: 20px;
+    }
+
+    .about-images img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    /* Use a 3-column grid for the images/text so we can keep the middle image
+       but only place text under the left and right images. Middle column is empty. */
+    .about-text-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+      max-width: 760px;
+      margin: 18px auto 30px;
+      align-items: start;
+    }
+
+    .about-text-row .text {
+      text-align: center;
+      font-family: 'Lexend Deca';
+      width: 100%;
+    }
+
+    .about-text-row .text.center-empty {
+      /* empty middle column - keep the grid spacing so images remain centered */
+      visibility: hidden; /* no text shown but column preserved */
+    }
+
+    /* paragraph intro under images */
+    .intro-paragraph {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+      font-family: 'Lexend Deca';
+    }
+
+    /* --- MERCH --- */
+    .merch-grid {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+
+    .merch-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .merch-item img {
+      width: 300px;
+      border-radius: 10px;
+      transition: transform 0.25s ease;
+      cursor: pointer;
+    }
+
+    .merch-item img:hover {
+      transform: scale(1.05);
+    }
+
+    .purchase-btn {
+      margin-top: 10px;
+      padding: 10px 20px;
+      border: none;
+      background: #47A9EB;
+      color: #DAEEFB;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: 'Lexend Deca';
+    }
+
+    .purchase-btn:hover {
+      opacity: 0.8;
+    }
+
+    /* --- PDF buttons / issues --- */
+    .pdf-row {
+      display: flex;
+      justify-content: center; /* next to each other and centered */
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .pdf-button {
+      background: #E873A4;   /* requested button color */
+      color: #F1D1DF;        /* requested button text color */
+      padding: 12px 22px;
+      border-radius: 12px;
+      font-size: 16px;
+      text-decoration: none;
+      font-family: 'Lexend Deca';
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      cursor: pointer;
+    }
+
+    .pdf-button:hover {
+      opacity: 0.9;
+    }
+
+    /* --- Modal --- */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 20px;
+      display: flex;
+      gap: 20px;
+      border-radius: 10px;
+      font-family: 'Lexend Deca';
+    }
+
+    .modal img {
+      width: 350px;
+      border-radius: 10px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: white;
+      border: none;
+      padding: 10px 15px;
+      font-size: 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: 'Lexend Deca';
+    }
+
+    /* small responsive tweaks */
+    @media (max-width: 820px) {
+      .about-images { gap: 16px; }
+      .about-text-row { grid-template-columns: 1fr; }
+      .about-text-row .center-empty { visibility: hidden; height: 0; margin: 0; padding: 0; }
+      .about-text-row .text { margin-bottom: 12px; }
+      .pdf-row { gap: 10px; }
+      h1 { font-size: 38px; }
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <h1>Welcome to My Website</h1>
-    <p class="subtitle">This is a simple site hosted for free with GitHub Pages.</p>
 
-    <a href="#" class="button">Learn More</a>
-  </header>
+<nav class="navbar">
+  <a href="#about">ABOUT</a>
+  <a href="#merch">MERCH</a>
+  <a href="#zine">ZINES</a>
+</nav>
 
-  <footer>
-    © 2025 — Hosted with GitHub Pages
-  </footer>
+<!-- ABOUT BOX -->
+<section id="about" class="section-box">
+  <h1>INSCAPE MAGAZINE</h1>
+
+  <!-- keep all three images as you originally had them -->
+  <div class="about-images">
+    <img src="about1.png" alt="About Image 1">
+    <img src="about2.png" alt="About Image 2">
+    <img src="about3.png" alt="About Image 3">
+  </div>
+
+  <!-- three-column grid for text under the images;
+       left and right columns show text; middle column kept empty (centered under middle image) -->
+  <div class="about-text-row">
+    <div class="text">
+    </div>
+
+    <div class="text center-empty">
+      <!-- intentionally empty to preserve middle column alignment under middle image -->
+      &nbsp;
+    </div>
+
+    <div class="text">
+    </div>
+  </div>
+
+  <p class="intro-paragraph">
+    INSCAPE ZINE was an idea born in 2023 by Maggie Washburn, and put in action in 2024 by Co Founders Duncan Carr and Maggie Washburn. INSCAPE volumes features Charleston student artists of all mediums and backgrounds, in hopes of sharing as many stories and amplifying as many voices as possible. It is truly a treat to work on these projects.</p><br>
+
+    <p class="intro-paragraph">The first two zines were produced and published by Duncan Carr and Maggie Washburn. Issue three is in the works, completely produced and published by women. Bella Wallen has taken Duncan Carr’s leadership position, and she and Maggie have been working tirelessly to create the most meaningful zine yet.</p><br>
+
+    <p class="intro-paragraph">Below you will find merchandise designed by Maggie Washburn, all proceeds for each piece will be donated to various women’s charities - we highly encourage you to order! You will also find links to previous INSCAPE zines, this is a piece of our history and we are proud of both issues. That being said, we have learned a lot since publishing our first zine, and we hope our growth is evident. Feel free to follow us on instagram @inscapezine and reach out via DM with any questions! </p> <br>
+  
+</section>
+
+<!-- MERCH BOX -->
+<section id="merch" class="section-box">
+  <h1>MERCHANDISE</h1>
+
+  <div class="merch-grid">
+    <div class="merch-item">
+      <img src="5.png" alt="Merch 1">
+      <button class="purchase-btn" onclick="window.open('https://venmo.com/maggiewashburn?amount=30','_blank')">PURCHASE WITH VENMO</button>
+    </div>
+
+    <div class="merch-item">
+      <img src="6.png" alt="Merch 2">
+      <button class="purchase-btn" onclick="window.open('https://venmo.com/maggiewashburn?amount=55','_blank')">PURCHASE WITH VENMO</button>
+    </div>
+
+    <div class="merch-item">
+      <img src="7.png" alt="Merch 3">
+      <button class="purchase-btn" onclick="window.open('https://venmo.com/maggiewashburn?amount=60','_blank')">PURCHASE WITH VENMO</button>
+    </div>
+  </div>
+</section>
+
+<!-- ZINES BOX -->
+<section id="zine" class="section-box">
+  <h1>ISSUES</h1>
+
+  <!-- buttons next to each other (keeps all original pdf links intact) -->
+  <div class="pdf-row">
+    <a class="pdf-button" href="issue3.pdf" target="_blank" rel="noopener">VOLUME THREE COMING SOON</a>
+    <a class="pdf-button" href="INSCAPE2.pdf" target="_blank" rel="noopener">CLICK HERE FOR VOLUME TWO</a>
+    <a class="pdf-button" href="VOLUMEONE.pdf" target="_blank" rel="noopener">CLICK HERE FOR VOLUME ONE</a>
+  </div>
+</section>
+
+<!-- MODAL (unchanged) -->
+<div id="modal" class="modal" aria-hidden="true">
+  <button class="close-btn" onclick="closeModal()">X</button>
+  <div class="modal-content">
+    <img id="modal-img" src="" alt="Large Merch">
+    <div>
+      <div style="font-weight:bold; margin-top:10px;">ENTER SIZE IN VENMO COMMENT</div>
+
+      <button class="purchase-btn"
+        onclick="window.open('https://venmo.com/maggiewashburn','_blank')"
+        style="margin-top:20px;">
+        PURCHASE WITH VENMO
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById('modal');
+  const modalImg = document.getElementById('modal-img');
+
+  function openModal(src) {
+    modal.style.display = 'flex';
+    modal.setAttribute('aria-hidden', 'false');
+    modalImg.src = src;
+  }
+
+  function closeModal() {
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden', 'true');
+  }
+
+  document.querySelectorAll('.merch-item img').forEach(img => {
+    img.addEventListener('click', () => openModal(img.src));
+  });
+</script>
+
 </body>
 </html>
+
